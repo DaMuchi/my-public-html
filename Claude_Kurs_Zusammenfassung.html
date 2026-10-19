@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Praxiskurs – Zusammenfassung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --p:#183E45; --p50:#8B9EA2; --p25:#C5D0D1; --p10:#E8EBEC;
+  --green:#89BD99; --teal:#86C1CF; --rose:#D47882; --gold:#E0AF58;
+  --text:#1b1f20; --text2:#4a5456; --bg:#f6f8f8; --card:#fff;
+  --font:'Montserrat','Calibri','Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;font-size:16px}
+a{color:var(--p)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.hero{background:var(--p);color:#fff;padding:56px 0 48px}
+.hero .tag{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:600}
+.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:12px 0 16px;font-weight:700}
+.hero p{max-width:720px;font-weight:300;font-size:18px;margin:0 0 24px;color:#dbe6e8}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+.meta span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:99px;font-size:13px}
+nav.toc{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--p25)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;padding:0 20px}
+nav.toc a{white-space:nowrap;text-decoration:none;font-size:13px;font-weight:500;padding:14px 12px;color:var(--text2);border-bottom:3px solid transparent}
+nav.toc a:hover{color:var(--p);border-color:var(--teal)}
+section{padding:48px 0 8px}
+h2{font-size:clamp(22px,3.4vw,30px);color:var(--p);margin:0 0 6px;line-height:1.2}
+h3{font-size:17px;color:var(--p);margin:28px 0 10px}
+.lead{color:var(--text2);max-width:760px;margin:0 0 24px}
+.card{background:var(--card);border:1px solid var(--p25);border-radius:14px;padding:22px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.talk-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+.num{flex:0 0 auto;width:48px;height:48px;border-radius:50%;background:var(--p);color:#fff;display:grid;place-items:center;font-weight:700;font-size:20px}
+.who{font-size:13px;color:var(--text2);margin:0}
+.time{display:inline-block;background:var(--p10);color:var(--p);font-size:12px;font-weight:600;padding:2px 10px;border-radius:99px;margin-right:6px}
+.box{border-left:5px solid var(--green);background:#fff;border-radius:0 12px 12px 0;padding:16px 20px;margin:20px 0;border-top:1px solid var(--p25);border-right:1px solid var(--p25);border-bottom:1px solid var(--p25)}
+.box.tip{border-left-color:var(--gold)}
+.box.warn{border-left-color:var(--rose)}
+.box b.l{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--p);margin-bottom:4px}
+.kpi{text-align:center}
+.kpi .v{font-size:34px;font-weight:700;color:var(--p);line-height:1.1}
+.kpi .d{font-size:13px;color:var(--text2)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:99px}
+.pill.ok{background:#dcefe2;color:#2c6a41}
+.pill.mid{background:#faecd0;color:#7a5410}
+.pill.bad{background:#f6dcdf;color:#8a2b36}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--p25)}
+th{background:var(--p);color:#fff;text-align:left;padding:10px 12px;font-weight:600}
+td{padding:10px 12px;border-top:1px solid var(--p10);vertical-align:top}
+.tablewrap{overflow-x:auto}
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:16px 0}
+.step{flex:1 1 150px;background:#fff;border:1px solid var(--p25);border-top:5px solid var(--teal);border-radius:12px;padding:14px;position:relative}
+.step:nth-child(2){border-top-color:var(--green)}.step:nth-child(3){border-top-color:var(--gold)}.step:nth-child(4){border-top-color:var(--rose)}.step:nth-child(5){border-top-color:var(--p50)}
+.step b{display:block;color:var(--p);margin-bottom:2px}
+.step small{color:var(--text2);display:block;font-size:13px;line-height:1.45}
+.bars .row{display:grid;grid-template-columns:150px 1fr 48px;gap:10px;align-items:center;margin:10px 0;font-size:14px}
+.bars .track{background:var(--p10);border-radius:99px;height:18px;overflow:hidden}
+.bars .fill{height:100%;border-radius:99px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cmp .col{border-radius:14px;padding:18px;border:1px solid var(--p25);background:#fff}
+.cmp h4{margin:0 0 8px;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.cmp .before h4{color:#8a2b36}.cmp .after h4{color:#2c6a41}
+.cmp .after{border-color:var(--green);background:#f3faf5}
+.cmp ul{margin:0;padding-left:18px;font-size:14px}
+@media(max-width:640px){.cmp{grid-template-columns:1fr}.bars .row{grid-template-columns:100px 1fr 40px}}
+ul.clean{padding-left:20px;margin:8px 0}
+ul.clean li{margin:6px 0}
+kbd{background:var(--p10);border:1px solid var(--p25);border-bottom-width:2px;border-radius:6px;padding:1px 7px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--p)}
+code{background:var(--p10);border-radius:5px;padding:1px 6px;font-size:13.5px}
+details{background:#fff;border:1px solid var(--p25);border-radius:12px;padding:12px 16px}
+details summary{cursor:pointer;font-weight:600;color:var(--p)}
+details p{margin:8px 0 2px;font-size:14.5px;color:var(--text2)}
+.layers{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.layer{border-radius:12px;padding:14px 18px;color:#fff}
+.layer b{display:block}
+.l1{background:var(--p50)}.l2{background:#4f7a82}.l3{background:var(--p)}
+.matrix td:first-child{font-weight:600;color:var(--p);white-space:nowrap}
+footer{margin-top:56px;background:var(--p);color:#cfdcdf;padding:32px 0;font-size:13px}
+footer a{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="wrap">
+  <span class="tag">Zusammenfassung für Einsteiger</span>
+  <h1>Claude richtig nutzen: Der Anthropic-Praxiskurs in 15 Minuten</h1>
+  <p>Ein vierstündiges YouTube-Video, aufbereitet für Kolleginnen und Kollegen ohne Vorkenntnisse. Was bringt es, was kannst du morgen selbst ausprobieren, und welche Begriffe musst du kennen?</p>
+  <div class="meta">
+    <span>Quelle: Kanal «DigitalFoundry», Sept. 2026</span>
+    <span>Laufzeit: ca. 3 h 46 min Transkript</span>
+    <span>8 Vorträge der «Code with Claude London»</span>
+  </div>
+</div>
+</header>
+
+<nav class="toc"><div class="wrap">
+  <a href="#kurz">Kurzfassung</a>
+  <a href="#glossar">Glossar</a>
+  <a href="#t1">1 Prompting</a>
+  <a href="#t2">2 Claude Code</a>
+  <a href="#t3">3 Agenten bauen</a>
+  <a href="#t4">4 Planen &amp; prüfen</a>
+  <a href="#t5">5 Google Cloud</a>
+  <a href="#t6">6 Routinen</a>
+  <a href="#t7">7 Gedächtnis</a>
+  <a href="#t8">8 Teamarbeit</a>
+  <a href="#start">Erste Schritte</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="kurz">
+  <h2>Die Kurzfassung</h2>
+  <p class="lead">Das Video ist kein einzelner Kurs, sondern eine Aneinanderreihung von acht Vorträgen und Workshops. Die Kapitelmarken in der YouTube-Beschreibung passen nicht exakt zum Inhalt. Diese Seite folgt deshalb den tatsächlichen Vorträgen. Gemeinsamer Nenner: <b>Claude liefert deutlich bessere Ergebnisse, wenn du ihm klaren Kontext, passende Werkzeuge und eine Möglichkeit zur Selbstkontrolle gibst.</b></p>
+  <div class="grid g3">
+    <div class="card"><b style="color:var(--p)">1. Klar und strukturiert schreiben</b><p style="margin:6px 0 0;font-size:14.5px">Gute Anweisungen sind gegliedert, widerspruchsfrei und nennen beide Seiten einer Abwägung. «Mach es besser» genügt nicht.</p></div>
+    <div class="card"><b style="color:var(--p)">2. Anweisungen ersetzen keine Fähigkeiten</b><p style="margin:6px 0 0;font-size:14.5px">«Rechne unbedingt richtig» macht Claude nicht besser im Kopfrechnen. Gib ihm ein Werkzeug (z. B. einen Rechner) statt eines Appells.</p></div>
+    <div class="card"><b style="color:var(--p)">3. Messen statt raten</b><p style="margin:6px 0 0;font-size:14.5px">Mit festen Testfällen («Evals») siehst du, ob eine Änderung wirklich hilft. Das ist die Grundlage jeder Verbesserung.</p></div>
+    <div class="card"><b style="color:var(--p)">4. Weniger ist mehr</b><p style="margin:6px 0 0;font-size:14.5px">Kurze Grundanweisung, Spezialwissen nur bei Bedarf nachladen («Skills»). Das spart Platz im Arbeitsspeicher von Claude.</p></div>
+    <div class="card"><b style="color:var(--p)">5. Erst planen, dann machen</b><p style="margin:6px 0 0;font-size:14.5px">Lass dir von Claude einen Plan zeigen oder Rückfragen stellen, bevor es loslegt. Das spart teure Fehlversuche.</p></div>
+    <div class="card"><b style="color:var(--p)">6. Vertrauen, aber prüfen</b><p style="margin:6px 0 0;font-size:14.5px">Claude darf viel erledigen. Sicherheit, Recht und Geschmack bleiben beim Menschen. Prüfen lässt sich vieles automatisieren.</p></div>
+  </div>
+  <div class="box warn"><b class="l">Hinweis zur Aktualität</b>
+    Die Vorträge stammen aus unterschiedlichen Zeitpunkten. Genannte Modellnamen (Opus 4.7, Sonnet 4.6) und Details wie die 200'000-Token-Grenze in Vortrag 2 sind Momentaufnahmen und können sich geändert haben. Die Grundprinzipien bleiben gültig.
+  </div>
+</section>
+
+<section id="glossar">
+  <h2>Glossar: Begriffe, die im Video fallen</h2>
+  <p class="lead">Klicke auf einen Begriff, um die Erklärung zu öffnen.</p>
+  <div class="grid g2">
+    <details><summary>Prompt</summary><p>Die Anweisung oder Frage, die du an Claude schreibst.</p></details>
+    <details><summary>System Prompt</summary><p>Die Grundanweisung, die immer mitgeschickt wird: Rolle, Regeln, Tonalität. Der Nutzer sieht sie meist nicht.</p></details>
+    <details><summary>Claude Code</summary><p>Claudes Programmierassistent. Er läuft im Terminal, in der Entwicklungsumgebung (VS Code, JetBrains) oder im Web und kann Dateien lesen, ändern und Befehle ausführen.</p></details>
+    <details><summary>Agent</summary><p>Ein KI-System, das nicht nur antwortet, sondern selbständig mehrere Schritte ausführt: Werkzeuge nutzen, Ergebnisse prüfen, weitermachen.</p></details>
+    <details><summary>Tool (Werkzeug)</summary><p>Eine Funktion, die Claude aufrufen darf, z. B. «Datei lesen», «Web suchen», «Rechnen».</p></details>
+    <details><summary>Skill</summary><p>Ein Wissenspaket (Anleitung, Regeln), das Claude erst lädt, wenn es für die Aufgabe nötig ist. Wie ein Handbuch im Regal statt auf dem Pult.</p></details>
+    <details><summary>Sub-Agent</summary><p>Ein zweiter, getrennter Claude mit eigenem Kontext. Nützlich für parallele Arbeit oder als «frischer Blick» (z. B. Code-Review).</p></details>
+    <details><summary>MCP</summary><p>Ein Standard, um Claude an externe Dienste anzubinden (z. B. Dokumentation, Datenbank). Praktisch, kann aber viel Kontext belegen.</p></details>
+    <details><summary>Kontextfenster</summary><p>Der «Arbeitsspeicher» von Claude: alles, was es in einem Gespräch gleichzeitig berücksichtigen kann. Ist es voll, wird Claude unzuverlässiger.</p></details>
+    <details><summary>CLAUDE.md</summary><p>Eine Textdatei im Projekt mit Hinweisen für Claude (Projektaufbau, Teststart, Stilregeln). Wird bei jedem Start automatisch gelesen.</p></details>
+    <details><summary>Eval</summary><p>Ein fester Testfall mit erwartetem Ergebnis. Eine Sammlung von Evals zeigt, ob eine Änderung etwas verbessert oder verschlechtert.</p></details>
+    <details><summary>Halluzination</summary><p>Wenn die KI Fakten oder Zahlen erfindet. Das Video zeigt auch das Gegenteil: Claude verschweigt Wissen, das es hätte.</p></details>
+    <details><summary>Harness</summary><p>Die Software «drumherum», die Claude steuert: Schleife, Werkzeuge, Limits. Nicht das Modell selbst.</p></details>
+    <details><summary>Claude Managed Agents</summary><p>Anthropics gehostete Plattform für Agenten. Sie übernimmt Betrieb, Skalierung und Sicherheit, sodass man sich auf den Agenten konzentrieren kann.</p></details>
+    <details><summary>Routine</summary><p>Ein automatisch gestarteter Claude-Code-Auftrag, ausgelöst per Zeitplan oder Ereignis (z. B. neues GitHub-Issue).</p></details>
+    <details><summary>Memory Store / Dreaming</summary><p>Ein dauerhafter Notizspeicher für Agenten über mehrere Sitzungen hinweg. «Dreaming» räumt ihn im Hintergrund auf.</p></details>
+    <details><summary>Adaptive Thinking / Effort</summary><p>Einstellungen, wie viel Claude nachdenkt. Mehr Denken bringt oft bessere Ergebnisse, kostet aber Zeit und Tokens.</p></details>
+  </div>
+</section>
+
+<!-- ============ TALK 1 ============ -->
+<section id="t1">
+  <div class="talk-head"><div class="num">1</div><div>
+    <h2>Der Prompting-Leitfaden</h2>
+    <p class="who"><span class="time">0:00 – 0:33</span>Margot Vanlar, Applied-AI-Ingenieurin, Anthropic London</p></div></div>
+  <p class="lead">Am Beispiel eines Kundenservice-Bots einer fiktiven Telefongesellschaft («Meridian Mobile») wird Schritt für Schritt gezeigt, wie man einen bestehenden, gewachsenen Prompt repariert. Auslöser ist oft ein Modellwechsel, nach dem Testfälle plötzlich scheitern.</p>
+
+  <h3>Das Vorgehen</h3>
+  <div class="flow">
+    <div class="step"><b>1. Evals bauen</b><small>5 Testfälle: ein einfacher Kontrollfall, Randfälle, und Fälle, in denen der Bot abgeben oder ablehnen soll.</small></div>
+    <div class="step"><b>2. Aufräumen</b><small>Unwahres entfernen («du bist ein Mensch»), Webseiten-Abfall löschen, mit XML-Tags gliedern.</small></div>
+    <div class="step"><b>3. Ausgabeformat festlegen</b><small>Format im Prompt beschreiben und technisch absichern (Stop-Sequenz, strukturierte Ausgabe).</small></div>
+    <div class="step"><b>4. Fehler einzeln beheben</b><small>Pro Fehlverhalten die Ursache im Prompt suchen und gezielt ändern.</small></div>
+  </div>
+
+  <h3>Vier Fehler und ihre Lösung</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Beobachtung</th><th>Ursache im Prompt</th><th>Lösung</th><th>Lehre</th></tr>
+    <tr><td>Bot verweigert Auskunft zum Hotspot-Datenvolumen und verweist auf eine URL</td><td>Alter Flicken: «Gib nie falsche Plandetails an, verweise stattdessen auf die URL»</td><td>Auf die Kundendaten als verlässliche Quelle verweisen</td><td>Claude kann auch <i>Wissen zurückhalten</i>. Alte Schutzflicken können bei neueren Modellen schaden. Begründung jeder Absicherung dokumentieren (Versionskontrolle).</td></tr>
+    <tr><td>Anteilige Rechnung wird vage im Kopf «berechnet»</td><td>«Rechne immer korrekt» ohne Hilfsmittel</td><td>Ein Berechnungs-Tool bereitstellen</td><td><b>Anweisungen schaffen keine Fähigkeiten.</b></td></tr>
+    <tr><td>Bot erklärt einen Abrechnungsfehler selbst, statt an einen Menschen zu übergeben</td><td>«Eskalation vermeiden, kostet ca. 8 $» (nur die Kostenseite genannt)</td><td>Beide Seiten nennen: Eskalation kostet 8 $, ein falscher Entscheid kostet Rückerstattung und Vertrauen</td><td>Bei Abwägungen immer Vor- und Nachteile nennen. Bessere Modelle wägen selbst gut ab.</td></tr>
+    <tr><td>Antworten schwanken im Format</td><td>Kein klarer Ausgabevertrag</td><td>Format beschreiben und technisch erzwingen</td><td>Nicht alles über den Prompt lösen. Auch die Umgebung kann Konsistenz sichern.</td></tr>
+  </table></div>
+  <div class="box tip"><b class="l">Faustregel</b>Kannst du beim Lesen deines Prompts nicht unterscheiden, was Richtlinie, Regel und Daten ist, kann es Claude vermutlich auch nicht.</div>
+
+  <h3>Neuer Agent von Grund auf: Wochenplan für Ladenpersonal</h3>
+  <p class="lead">Aufgabe: 8 Mitarbeitende, feste Regeln, ein Wochenplan. Geprüft wurde per Python-Funktion, wie viele Regeln verletzt wurden (5 Durchläufe pro Variante).</p>
+  <div class="tablewrap"><table>
+    <tr><th>Variante</th><th>Ergebnis</th><th>Aufwand</th></tr>
+    <tr><td>Sonnet 4.6, einfacher Prompt</td><td><span class="pill bad">alle 5 fehlerhaft</span></td><td>viele Tokens, prüft seine Arbeit nicht</td></tr>
+    <tr><td>Opus 4.7 (grösseres Modell)</td><td><span class="pill mid">deutlich weniger Fehler, nicht fehlerfrei</span></td><td>–</td></tr>
+    <tr><td>Opus 4.7 mit «Adaptive Thinking»</td><td><span class="pill ok">zuverlässig korrekt</span></td><td>ca. 3× Tokens und 3× Wartezeit (~100 s)</td></tr>
+    <tr><td>Sonnet 4.6 mit besserem Prompt («prüfe dein Ergebnis»)</td><td><span class="pill mid">2 von 5</span></td><td>übrige scheiterten am Token-Limit; noch langsamer</td></tr>
+    <tr><td><b>Dreistufige Schleife:</b> Erzeugen → Prüfen → Reparieren (drei kleine Prompts)</td><td><span class="pill ok">alle bestanden</span></td><td>weniger Tokens und schneller als die Prompt-Variante</td></tr>
+  </table></div>
+  <div class="box"><b class="l">Der Clou</b>Die Schleife erlaubt «weiche» Wünsche zur Laufzeit («Harry und Sally nicht zusammen einteilen»), ohne die Prüf-Software ändern zu müssen. Wichtig: aufteilen, wo Schritte klar und wiederholbar sind, statt einen riesigen Prompt alles erledigen zu lassen.</div>
+</section>
+
+<!-- ============ TALK 2 ============ -->
+<section id="t2">
+  <div class="talk-head"><div class="num">2</div><div>
+    <h2>Claude Code: Bewährte Arbeitsweisen</h2>
+    <p class="who"><span class="time">0:33 – 0:48</span>Mitglied des Claude-Code-Teams (Name im Transkript abgeschnitten)</p></div></div>
+  <p class="lead">Eine kompakte Sammlung von Praxistipps für den Einstieg und für Fortgeschrittene. Hinweis: Der Vortrag stammt aus der Zeit der Claude-4-Einführung.</p>
+
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">Grundlagen</h3>
+      <ul class="clean">
+        <li><b>CLAUDE.md anlegen.</b> Claude hat kein Gedächtnis zwischen Sitzungen. Die Datei teilt Wissen mit dem ganzen Team: Teststart, Projektaufbau, Stilregeln. Es gibt sie pro Projekt, pro Unterordner und im Benutzerordner. Mit <code>@datei</code> lassen sich weitere Dateien einbinden.</li>
+        <li><b>Rechte steuern.</b> Lesen darf Claude frei, Schreiben und Befehle werden erfragt. Häufige Befehle kannst du dauerhaft erlauben.</li>
+        <li><b>Kommandozeilen-Tools nutzen.</b> Gut dokumentierte Tools (z. B. GitHub <code>gh</code>) sind meist besser als ein zusätzlicher MCP-Server.</li>
+        <li><b>Kontext verwalten.</b> Bei voller Anzeige: <code>/clear</code> (frisch starten) oder <code>/compact</code> (zusammenfassen und weitermachen).</li>
+      </ul></div>
+    <div class="card"><h3 style="margin-top:0">Effizient arbeiten</h3>
+      <ul class="clean">
+        <li><b>Erst Plan, dann Umsetzung.</b> «Suche die Ursache und sag mir, wie wir es beheben» statt «Fix den Bug».</li>
+        <li><b>To-do-Liste beobachten.</b> Wirkt sie falsch, mit <kbd>Esc</kbd> stoppen und umsteuern.</li>
+        <li><b>Kleine Schritte.</b> Tests, Typ- und Stilprüfung, häufig einchecken, um zurückzufallen.</li>
+        <li><b>Screenshots einfügen.</b> Claude versteht Bilder, z. B. ein Mock-up als Vorlage für eine Webseite.</li>
+        <li><b>«Think hard» im Auftrag.</b> Neuere Modelle denken auch zwischen den Werkzeugaufrufen nach.</li>
+      </ul></div>
+  </div>
+
+  <h3>Tastenkürzel und Befehle</h3>
+  <div class="tablewrap"><table class="matrix">
+    <tr><th>Was</th><th>Wirkung</th></tr>
+    <tr><td><kbd>Shift</kbd>+<kbd>Tab</kbd></td><td>Automatisches Akzeptieren von Änderungen (Auto-Accept)</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Claude unterbrechen und neu ausrichten, «dein bester Freund»</td></tr>
+    <tr><td><kbd>Esc</kbd> <kbd>Esc</kbd></td><td>Im Gespräch zurückspringen</td></tr>
+    <tr><td><code>/model</code></td><td>Modell wählen (z. B. zwischen Sonnet und Opus)</td></tr>
+    <tr><td><code>/clear</code> · <code>/compact</code></td><td>Kontext leeren · Kontext zusammenfassen</td></tr>
+  </table></div>
+  <div class="box tip"><b class="l">Fortgeschritten</b>Mehrere Claude-Sitzungen parallel starten (einzelne Personen fahren bis zu vier). Zustand zwischen Sitzungen über eine gemeinsame Markdown-Datei austauschen. Claude auch ohne Bildschirm einsetzen (z. B. in GitHub Actions). Den öffentlichen Änderungsverlauf wöchentlich lesen, weil sich viel ändert.</div>
+  <div class="box"><b class="l">Frage aus dem Publikum</b>Claude hinterliess ungewollt erklärende Kommentare im Code. Das war ein Modellverhalten, das in Claude 4 deutlich besser wurde. Zudem folgt Claude 4 Anweisungen genauer: Es lohnt sich, die eigene CLAUDE.md zu entschlacken.</div>
+</section>
+
+<!-- ============ TALK 3 ============ -->
+<section id="t3">
+  <div class="talk-head"><div class="num">3</div><div>
+    <h2>Agenten richtig aufbauen: Skills, Tools, Sub-Agents</h2>
+    <p class="who"><span class="time">0:48 – 1:33</span>Will, Engineering-Team Applied AI, Anthropic</p></div></div>
+  <p class="lead">Praxis-Workshop mit dem Beispiel «StockPilot», einem Lagerverwaltungs-Agenten für einen Detailhändler. Er wurde über Wochen immer weiter ausgebaut und dadurch schlechter. Das Beispiel steht für ein sehr häufiges Problem.</p>
+
+  <div class="cmp">
+    <div class="col before"><h4>Vorher</h4><ul>
+      <li>System Prompt ca. 400 Zeilen, teils widersprüchlich</li>
+      <li>12 Werkzeuge, davon 3 als Sub-Agenten verpackt</li>
+      <li>Eigene Agenten-Schleife selbst gebaut</li>
+      <li>Fehler: Umwege, Kommunikationsbruch mit Sub-Agent, widersprüchliche Regeln</li></ul></div>
+    <div class="col after"><h4>Nachher</h4><ul>
+      <li>System Prompt ca. 15 Zeilen, Fachwissen in <b>Skills</b></li>
+      <li>3 Werkzeuge: Bash, Lesen, Schreiben</li>
+      <li>Betrieb auf Claude Managed Agents</li>
+      <li>Nur der Prognose-Sub-Agent bleibt, bewusst getrennt</li></ul></div>
+  </div>
+
+  <h3>Ergebnis der Evals (12 Aufgaben)</h3>
+  <div class="bars">
+    <div class="row"><span>Ausgangslage (Folie)</span><div class="track"><div class="fill" style="width:83%;background:var(--gold)"></div></div><b>83 %</b></div>
+    <div class="row"><span>Erster Live-Lauf</span><div class="track"><div class="fill" style="width:62%;background:var(--rose)"></div></div><b>62 %</b></div>
+    <div class="row"><span>Nach den Umbauten</span><div class="track"><div class="fill" style="width:92%;background:var(--green)"></div></div><b>92 %</b></div>
+  </div>
+  <p style="font-size:13.5px;color:var(--text2)">Zusätzlich sanken Tokenverbrauch (zuvor über 200'000 pro Aufgabe), Kosten und Ausführungszeit, weil Claude kleine Python-Skripte schrieb, statt ganze Tabellen zu «lesen». Der Referent betont: Das ist kein Automatismus, Verschlechterungen sind möglich.</p>
+
+  <h3>Wann nimmt man was?</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Baustein</th><th>Einsetzen, wenn …</th><th>Gegenbeispiel</th></tr>
+    <tr><td><b>System Prompt</b></td><td>Claude eine Information <i>immer</i> braucht</td><td>Fachwissen für Einzelaufgaben gehört in Skills</td></tr>
+    <tr><td><b>Skill</b></td><td>Wissen nur <i>manchmal</i> gebraucht wird (z. B. Prognoseverfahren). Schont den Kontext</td><td>–</td></tr>
+    <tr><td><b>Eingebaute «Mensch-Werkzeuge»</b><br><small>Dateisystem, Code ausführen, Websuche, To-do-Liste</small></td><td>Als Erstes. Tabellen und Dokumente mit Code auswerten statt in den Kontext laden</td><td>Entfernen, was der Agent nicht braucht</td></tr>
+    <tr><td><b>Eigene Tools</b></td><td>Wenn die Basiswerkzeuge nicht reichen</td><td>–</td></tr>
+    <tr><td><b>MCP</b></td><td>Wenn mehrere Agenten dieselben, geprüften Werkzeuge teilen sollen</td><td>Nicht «MCP zuerst». Das führt zu Wildwuchs und belegt viel Kontext</td></tr>
+    <tr><td><b>Sub-Agent</b></td><td>(a) Viel Rechenkraft parallel einsetzen (Recherche) oder (b) ein <i>frischer Blick</i> nötig ist (Code-Review, unvoreingenommene Prognose)</td><td>Neuere Modelle können oft mehr selbst. Teilweise lässt sich ein Sub-Agent wieder auflösen</td></tr>
+  </table></div>
+  <div class="box tip"><b class="l">Vorgehen: «Hill Climbing»</b>Evals laufen lassen, Architektur anpassen, erneut messen, wiederholen. Und die Evals mitwachsen lassen, wenn der Agent neue Fähigkeiten bekommt. Auch Claude selbst eignet sich, um Eval-Ergebnisse zu analysieren und Ursachen zu clustern.</div>
+</section>
+
+<!-- ============ TALK 4 ============ -->
+<section id="t4">
+  <div class="talk-head"><div class="num">4</div><div>
+    <h2>Wie Anthropic mit Claude Code arbeitet</h2>
+    <p class="who"><span class="time">1:33 – 2:03</span>Arno, Architekt im Applied-AI-Team, Anthropic</p></div></div>
+  <p class="lead">Je länger ein Agent selbständig arbeitet, desto teurer ist ein falscher Start. Deshalb wird die Prüfung nach vorne verlagert: erst Anforderungen klären, dann Vorschau ansehen, dann die Prüfung in das Produkt einbauen.</p>
+
+  <div class="flow">
+    <div class="step"><b>1. Claude interviewt dich</b><small>Statt alles vorab zu formulieren, lässt du Claude gezielte Rückfragen stellen (Hilfsmittel «AskUserQuestion»).</small></div>
+    <div class="step"><b>2. Vorschau als HTML</b><small>Mehrere Designvarianten als anklickbare HTML-Seiten statt langer Markdown-Dateien. Verständlicher, dichter, besser zu kommentieren.</small></div>
+    <div class="step"><b>3. Prüfung eingebaut</b><small>Die App legt ihren Zustand offen, sodass Mensch, Agent und Automatik dieselben Prüfungen ausführen.</small></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card"><h3 style="margin-top:0">Guter vs. schlechter Prompt</h3>
+      <p style="margin:0 0 8px"><span class="pill bad">Schlecht</span> «Mach es besser.» «Keine Fehler bitte.»</p>
+      <p style="margin:0"><span class="pill ok">Gut</span> Bereiche nennen (Zielgruppe, Aufgabe), das Ergebnis offen lassen und Claude bitten, dich dazu zu befragen.</p>
+      <p style="font-size:14px;color:var(--text2)">Idee dahinter: Claude kann oft besser herausfragen, was du wirklich willst, als du es vorab beschreiben kannst («Bitter Lesson»: Beschränke das Modell nicht unnötig).</p></div>
+    <div class="card"><h3 style="margin-top:0">Tipps aus der Praxis</h3>
+      <ul class="clean">
+        <li><b>Auto-Modus</b> (<kbd>Shift</kbd>+<kbd>Tab</kbd>) sei «der beste».</li>
+        <li><b>Effort</b>: Empfohlen wird «X-High» (<code>/effort</code>).</li>
+        <li><b>Fast-Mode</b> (<code>/fast</code>) für schnellere Antworten.</li>
+        <li><b>Screenshots</b> bei Layout-Problemen; neuere Modelle sehen deutlich besser.</li>
+        <li>Markdown-Dateien über ca. 200 Zeilen liest niemand.</li>
+      </ul></div>
+  </div>
+
+  <h3>Beispiel: Verifikation, die Claude selbst ausführen kann</h3>
+  <p class="lead">An einer kleinen To-do-App zeigt der Referent, wie dieselben Prüfungen auf drei Arten laufen: als Dashboard für Menschen, durch Claude im Browser, und automatisch in der Entwicklungs-Pipeline.</p>
+  <div class="grid g3">
+    <div class="card"><b style="color:var(--p)">Mensch</b><p style="margin:4px 0 0;font-size:14px">Dashboard mit Bestanden/Durchgefallen und Details. Ein absichtlicher Fehler («3 + 4 ≠ 10») wird sichtbar.</p></div>
+    <div class="card"><b style="color:var(--p)">Agent</b><p style="margin:4px 0 0;font-size:14px">Claude liest den offengelegten Zustand und lässt die Prüfungen laufen (mit Playwright). Er findet und diagnostiziert Fehler selbst.</p></div>
+    <div class="card"><b style="color:var(--p)">Automatik (CI)</b><p style="margin:4px 0 0;font-size:14px">Derselbe Test per Befehl, ohne Oberfläche. Läufe lassen sich als Video aufzeichnen und als Nachweis teilen.</p></div>
+  </div>
+  <div class="box"><b class="l">Erkenntnis</b>Man kann den «Vertrag» der Oberfläche brechen, ohne die App zu brechen. Der Test schlägt dann trotzdem an. Das Claude-Code-Team zeichnet auf diese Weise praktisch alle Frontend-Änderungen auf.</div>
+</section>
+
+<!-- ============ TALK 5 ============ -->
+<section id="t5">
+  <div class="talk-head"><div class="num">5</div><div>
+    <h2>Claude Code auf der Google Cloud</h2>
+    <p class="who"><span class="time">2:03 – 2:29</span>Ivan Nardini, Developer Advocate, Google Cloud</p></div></div>
+  <p class="lead">Eine Feedback-App wird entlang des gesamten Software-Lebenszyklus gebaut. Dabei schlüpft der Referent nacheinander in fünf Rollen.</p>
+  <div class="flow">
+    <div class="step"><b>Produkt</b><small>Handskizze wird zum Prototyp (Wireframe).</small></div>
+    <div class="step"><b>Design</b><small>Plan-Modus: Claude zeigt erst den Plan, dann wird umgesetzt.</small></div>
+    <div class="step"><b>Entwicklung</b><small>MCP-Server mit aktueller Doku und Skills. Drei Sub-Agenten bauen API, Datenfluss und Dashboard parallel.</small></div>
+    <div class="step"><b>Sicherheit</b><small>Vorgefertigter Security-Review findet Problem, behebt es, dann Deployment.</small></div>
+    <div class="step"><b>Daten</b><small>BigQuery und Looker über MCP: Auswertung ohne Spezialwissen.</small></div>
+  </div>
+  <div class="box"><b class="l">Warum Claude über Google Cloud?</b>Abrechnung pro Token ohne Nachrichtenlimit, reservierbarer Durchsatz, einfache Anmeldung über bestehende Zugangsdaten (kein API-Schlüssel), Daten bleiben im eigenen Projekt, Betrieb in mehreren Regionen. Das Ganze ist als Herstellervortrag einzuordnen. Relevant vor allem für Firmen, die bereits Google Cloud nutzen.</div>
+</section>
+
+<!-- ============ TALK 6 ============ -->
+<section id="t6">
+  <div class="talk-head"><div class="num">6</div><div>
+    <h2>Routinen: Claude wird vom Werkzeug zum Teammitglied</h2>
+    <p class="who"><span class="time">2:29 – 2:50</span>Maya, Applied-AI-Team, Anthropic</p></div></div>
+  <p class="lead">Bisher wartet Claude, bis du Enter drückst. Eine <b>Routine</b> startet von selbst, auf Anthropics Infrastruktur, ganz ohne eigenen Server und auch bei geschlossenem Laptop. Eingerichtet wird sie mit einem Befehl (<code>/schedule</code>).</p>
+  <div class="grid g3">
+    <div class="card" style="border-top:5px solid var(--teal)"><b style="color:var(--p)">1. Auslöser</b><ul class="clean" style="font-size:14px"><li>Zeitplan (z. B. jeden Montag 10 Uhr)</li><li>Ereignis (GitHub-Ereignis, Webhook aus der eigenen Pipeline)</li></ul></div>
+    <div class="card" style="border-top:5px solid var(--green)"><b style="color:var(--p)">2. Kontext</b><ul class="clean" style="font-size:14px"><li>Code-Repositories</li><li>Anbindungen (Slack, Drive, Monitoring …)</li><li>«Was Claude kennt, ist die Obergrenze seines Erfolgs.»</li></ul></div>
+    <div class="card" style="border-top:5px solid var(--gold)"><b style="color:var(--p)">3. Steuerung</b><ul class="clean" style="font-size:14px"><li>Live zuschauen und eingreifen</li><li>Zweite Routine prüft die Arbeit der ersten</li><li>Ergebnis immer verifizieren</li></ul></div>
+  </div>
+  <h3>Beispiele</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Aufgabe</th><th>Auslöser</th><th>Ergebnis</th></tr>
+    <tr><td>Dokumentation aktuell halten (bei Anthropic im Einsatz)</td><td>Wöchentlich; oder bei neuem Issue / Label «needs docs»</td><td>Claude vergleicht Code und Doku, eröffnet einen Änderungsvorschlag, meldet sich in Slack</td></tr>
+    <tr><td>Deployment-Prüfer</td><td>Webhook nach jedem Deployment</td><td>Claude prüft Monitoring und empfiehlt «Go / No-Go» für ein Rollback</td></tr>
+    <tr><td>Rufbereitschaft, Backlog-Triage</td><td>Zeitplan</td><td>Zusammenfassung und Priorisierung</td></tr>
+  </table></div>
+  <div class="box tip"><b class="l">Denkanstoss fürs Team</b>Welche Aufgabe machst du jede Woche gleich? Genau solche eignen sich als Routine.</div>
+</section>
+
+<!-- ============ TALK 7 ============ -->
+<section id="t7">
+  <div class="talk-head"><div class="num">7</div><div>
+    <h2>Agenten, die sich erinnern: Memory und «Dreaming»</h2>
+    <p class="who"><span class="time">2:50 – 3:19</span>Kevin, Engineer, Anthropic</p></div></div>
+  <p class="lead">Standardmässig ist jede Agenten-Sitzung isoliert: Was du gestern erzählt hast, weiss der Agent heute nicht mehr. Das lässt sich in zwei Schritten lösen.</p>
+  <div class="layers">
+    <div class="layer l1"><b>Ebene 1: Sitzung</b>Eine isolierte Unterhaltung, meist vergänglich.</div>
+    <div class="layer l2"><b>Ebene 2: Memory Store</b>Dauerhafter, dateiähnlicher Speicher. Der Agent liest und schreibt Notizen darin (mit Bash, Suche, Lesen). Die Dateien sind versioniert und von Menschen einsehbar und korrigierbar. Zugriff lässt sich auf «nur lesen» beschränken.</div>
+    <div class="layer l3"><b>Ebene 3: Dreaming</b>Ein Hintergrundauftrag, der Notizen und alte Gespräche durchgeht: Fakten prüfen, anreichern (Daten, Namen), Duplikate zusammenführen, Inhaltsverzeichnis anlegen. Das Original bleibt unberührt, das Ergebnis ist ein neuer Speicher.</div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><b style="color:var(--p)">Demo-Ablauf</b>
+      <ol class="clean" style="font-size:14.5px"><li>Ohne Memory: Agent antwortet auf die Nachfrage «Das weiss ich nicht».</li><li>Mit Memory: Agent speichert und findet die Info in der nächsten Sitzung.</li><li>Nach Dreaming: Antworten sind vollständiger (Zeitplan, Links, Namen).</li></ol></div>
+    <div class="card"><b style="color:var(--p)">Gut zu wissen</b>
+      <ul class="clean" style="font-size:14.5px"><li>Ein Dream-Lauf dauert Minuten bis Stunden. Bewusst nicht live.</li><li>Er verbraucht viele Tokens (laut Referent ca. 95 % aus dem Zwischenspeicher).</li><li>Günstigere Varianten (z. B. Stapelverarbeitung) werden geprüft.</li></ul></div>
+  </div>
+</section>
+
+<!-- ============ TALK 8 ============ -->
+<section id="t8">
+  <div class="talk-head"><div class="num">8</div><div>
+    <h2>Wenn Programmieren nicht mehr der Engpass ist</h2>
+    <p class="who"><span class="time">3:19 – 3:46</span>Führungskraft im Claude-Code-Team (Name im Transkript nicht genannt)</p></div></div>
+  <p class="lead">Ein Erfahrungsbericht zur Teamarbeit: Früher war Entwicklungszeit knapp und teuer. Heute entsteht Code schnell, und der Engpass wandert zu Prüfung, Review, Sicherheit und Abstimmung.</p>
+
+  <div class="cmp">
+    <div class="col before"><h4>Früher wichtig</h4><ul>
+      <li>Halbjahres-Roadmaps</li><li>Design-Dokument vor jedem Code</li><li>Produkt-Reviews</li><li>Wer hat den Code geschrieben?</li><li>Strenge Rollengrenzen</li></ul></div>
+    <div class="col after"><h4>Heute im Team</h4><ul>
+      <li>Planung «just in time»</li><li>Prototyp oder Pull Request statt Dokument. «Code gewinnt» die Diskussion</li><li>Verifikation früh automatisieren («Shift left»)</li><li>Rollen verschwimmen: PMs coden, Entwickler schreiben Texte mit Claude</li></ul></div>
+  </div>
+
+  <h3>Grundsätze des Teams</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Thema</th><th>Praxis</th></tr>
+    <tr><td>Code-Review</td><td>Claude übernimmt Stil, Lint, erste Fehlersuche, Tests. <b>Menschen</b> bleiben bei Recht, Sicherheitskritischem, Risikoabwägung und Produktgefühl («Vertrauen, aber prüfen»).</td></tr>
+    <tr><td>Wer war es?</td><td>Besser fragen: <i>Was will ich wirklich wissen?</i> (Ursache eines Fehlers? Experte? Kontext?) und genau das automatisieren.</td></tr>
+    <tr><td>Quelle der Wahrheit</td><td>Der Code selbst. Wer Spezifikationen pflegt, lässt Claude Code gegen die Spezifikation prüfen.</td></tr>
+    <tr><td>Teamform</td><td>Flach, eine gemeinsame Mission. Führungskräfte steigen zuerst als Mitarbeitende ein und nutzen das Produkt selbst («Dogfooding»).</td></tr>
+    <tr><td>Prozesse</td><td><b>Ausdrückliche Erlaubnis, Prozesse zu streichen.</b> Beispiel: Aus Stand-up und Tabelle wurde ein Skill, der den Stand zusammenfasst.</td></tr>
+    <tr><td>Alles «claudifizieren»</td><td>Bei jeder Aufgabe fragen: Könnte Claude das tun oder dabei helfen?</td></tr>
+  </table></div>
+
+  <h3>Woran man Erfolg erkennt</h3>
+  <div class="grid g3">
+    <div class="card kpi"><div class="v">↓</div><b>Einarbeitungszeit</b><div class="d">Neue Leute werden schneller wirksam</div></div>
+    <div class="card kpi"><div class="v">↓</div><b>PR-Durchlaufzeit</b><div class="d">Zeigt auch Engpässe in Test und Infrastruktur</div></div>
+    <div class="card kpi"><div class="v">↑</div><b>Claude-unterstützte Commits</b><div class="d">Aber nie Selbstzweck: Qualität und Verlässlichkeit zählen</div></div>
+  </div>
+  <div class="box tip"><b class="l">Mitnahmefrage der Referentin</b>Wähle deinen «lautesten» Ablauf, also den teuersten oder unbeliebtesten, und frage: Dient er noch seinem Zweck? Beispiel aus dem Vortrag: Ein wöchentliches Meeting mit 50 Personen, in dem alle am Laptop sassen, wurde nach einer einzigen Warum-Frage abgeschafft.</div>
+</section>
+
+<section id="start">
+  <h2>Deine ersten Schritte</h2>
+  <p class="lead">Wenn du Claude erst kennenlernst: Diese sechs Dinge kannst du sofort umsetzen, ohne Programmierkenntnisse.</p>
+  <div class="flow">
+    <div class="step"><b>1. Kontext geben</b><small>Wer ist die Zielgruppe, was ist das Ziel, was ist bereits bekannt? Je mehr, desto besser.</small></div>
+    <div class="step"><b>2. Claude befragen lassen</b><small>«Stell mir Fragen, bevor du anfängst.»</small></div>
+    <div class="step"><b>3. Plan zuerst</b><small>«Zeig mir erst, wie du vorgehen würdest.»</small></div>
+    <div class="step"><b>4. Beide Seiten nennen</b><small>Bei Abwägungen Vor- und Nachteile erklären, nicht nur verbieten.</small></div>
+    <div class="step"><b>5. Prüfen lassen</b><small>«Kontrolliere dein Ergebnis gegen meine Kriterien.» Wichtiges immer selbst gegenprüfen.</small></div>
+    <div class="step"><b>6. Kleine Aufgaben automatisieren</b><small>Wiederkehrendes als Skill oder Routine festhalten.</small></div>
+  </div>
+  <div class="box warn"><b class="l">Wichtig für den Betrieb</b>Gib keine vertraulichen Kundendaten ein, solange die Nutzung nicht intern freigegeben ist. Bei sicherheits- oder rechtsrelevanten Ergebnissen entscheidet immer ein Mensch.</div>
+</section>
+
+</main>
+
+<footer><div class="wrap">
+  <p><b>Quelle:</b> «4-hour Anthropic free course replaces about 10 paid engineering courses», DigitalFoundry, YouTube, 6. September 2026: <a href="https://www.youtube.com/watch?v=xI3q41CBbsA">youtube.com/watch?v=xI3q41CBbsA</a></p>
+  <p>Zusammenfassung auf Basis des automatischen Transkripts, erstellt am 18. Oktober 2026. Transkriptionsfehler (z. B. «Cloud» statt «Claude») wurden sinngemäss korrigiert. Für verbindliche Details bitte das Video oder die offizielle Anthropic-Dokumentation konsultieren. Die Zeitangaben beziehen sich auf das Video.</p>
+</div></footer>
+
+</body>
+</html>
